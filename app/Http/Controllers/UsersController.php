@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Barangay;
+use App\Models\Muncity;
 use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -36,5 +38,13 @@ class UsersController extends Controller
     public function getUserProfile(Request $request) {
         return Auth::user();
         //return $request->bearerToken();
+    }
+
+    public function getBarangay() {
+        return Barangay::where("muncity_id",Auth::user()->muncity_id)->get();
+    }
+
+    public function getMunicipality() {
+        return Muncity::find(Auth::user()->muncity);
     }
 }
