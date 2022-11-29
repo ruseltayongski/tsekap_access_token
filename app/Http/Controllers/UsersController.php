@@ -41,7 +41,7 @@ class UsersController extends Controller
     }
 
     public function getBarangay() {
-        return Barangay::where("muncity_id",Auth::user()->muncity_id)->get();
+        return Barangay::where("muncity_id",Auth::user()->muncity)->get();
     }
 
     public function getMunicipality() {
