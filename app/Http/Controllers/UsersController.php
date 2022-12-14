@@ -40,8 +40,8 @@ class UsersController extends Controller
         //return $request->bearerToken();
     }
 
-    public function getBarangay() {
-        return Barangay::where("muncity_id",Auth::user()->muncity)->get();
+    public function getBarangay(Request $request) {
+        return $request->barangay_id ? Barangay::find($request->barangay_id) : Barangay::where("muncity_id",Auth::user()->muncity)->get();
     }
 
     public function getMunicipality() {
