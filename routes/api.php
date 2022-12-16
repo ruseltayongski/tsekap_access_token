@@ -21,6 +21,7 @@ Route::get('/expired/token', [UsersController::class, 'expiredAccessToken'])->na
 Route::prefix('/user')->group(function(){
     Route::post('/login', [LoginController::class, 'login']);
     Route::middleware(['auth:api','EnsureTokenIsValid'])->get('/profile', [UsersController::class, 'getUserProfile']); //protected API
+    Route::middleware(['auth:api','EnsureTokenIsValid'])->get('/profile/info', [UsersController::class, 'getUserInfo']); //protected API
     Route::middleware(['auth:api','EnsureTokenIsValid'])->get('/retrieve', [UsersController::class, 'retrieveUsers']); //protected API
     Route::middleware(['auth:api','EnsureTokenIsValid'])->get('/barangay', [UsersController::class, 'getBarangay']); //protected API
     Route::middleware(['auth:api','EnsureTokenIsValid'])->get('/muncity', [UsersController::class, 'getMunicipality']); //protected API

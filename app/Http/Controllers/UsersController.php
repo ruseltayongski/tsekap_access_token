@@ -47,4 +47,9 @@ class UsersController extends Controller
     public function getMunicipality() {
         return Muncity::find(Auth::user()->muncity);
     }
+
+    public function getUserInfo(Request $request) {
+        return User::find($request->id);
+    }
+
 }
