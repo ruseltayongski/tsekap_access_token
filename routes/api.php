@@ -25,4 +25,5 @@ Route::prefix('/user')->group(function(){
     Route::middleware(['auth:api','EnsureTokenIsValid'])->get('/retrieve', [UsersController::class, 'retrieveUsers']); //protected API
     Route::middleware(['auth:api','EnsureTokenIsValid'])->get('/barangay', [UsersController::class, 'getBarangay']); //protected API
     Route::middleware(['auth:api','EnsureTokenIsValid'])->get('/muncity', [UsersController::class, 'getMunicipality']); //protected API
+    Route::middleware(['auth:api','EnsureTokenIsValid'])->get('/user_barangay', [UsersController::class, 'getUserBarangay']); //protected API
 });

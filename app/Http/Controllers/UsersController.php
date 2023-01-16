@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Barangay;
 use App\Models\Muncity;
 use App\Models\User;
+use App\Models\UserBrgy;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -50,6 +51,10 @@ class UsersController extends Controller
 
     public function getUserInfo(Request $request) {
         return User::find($request->id);
+    }
+
+    public function getUserBarangay(Request $request) {
+        return UserBrgy::where("user_id",$request->userid)->get();
     }
 
 }
