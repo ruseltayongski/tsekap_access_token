@@ -54,7 +54,11 @@ class UsersController extends Controller
     }
 
     public function getUserBarangay(Request $request) {
-        return UserBrgy::where("user_id",$request->userid)->get();
+        return UserBrgy::
+            select("barangay.*")
+            ->where("userbrgy.user_id",$request->userid)
+            ->leftJoin("barangay","barangay.id","=","userbrgy.barangay_id")
+            ->get();
     }
 
 }
