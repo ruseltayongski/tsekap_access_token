@@ -24,9 +24,15 @@ class LoginController extends Controller
             'password' => $request->password
         ];
 
-        if( !Auth::attempt($login) ) {
+        if(!Auth::attempt($login)) {
             return response([
                 'message' => 'Invalid Login Credentials'
+            ]);
+        }
+
+        if(Auth::user()->user_priv != 5) {
+            return response([
+                'message' => 'Your account is not authorized'
             ]);
         }
 
