@@ -18,6 +18,7 @@ class EnsureTokenIsValid
      */
     public function handle(Request $request, Closure $next)
     {
+        //return response(['header' => $request->header('Authorization'),'user' => $request->user()]);
         if(Carbon::now() > $request->user()->token()->expires_at) {
             return redirect('api/expired/token');
         }

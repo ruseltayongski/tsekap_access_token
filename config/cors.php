@@ -15,11 +15,11 @@ return [
     |
     */
 
-    'paths' => ['api/*', 'sanctum/csrf-cookie'],
+    'paths' => ['/profile', '/profile/info', '/retrieve', '/barangay', '/muncity', '/user_barangay*'],
 
     'allowed_methods' => ['*'],
 
-    'allowed_origins' => ['*'],
+    'allowed_origins' => ['cvchd7.com'],
 
     'allowed_origins_patterns' => [],
 
