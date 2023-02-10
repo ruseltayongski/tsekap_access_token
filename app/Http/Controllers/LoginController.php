@@ -30,11 +30,11 @@ class LoginController extends Controller
             ]);
         }
 
-        if(Auth::user()->user_priv != 5) {
+        /*if(Auth::user()->user_priv != 5) {
             return response([
                 'message' => 'Your account is not authorized'
             ]);
-        }
+        }*/
 
         $accessToken = Auth::user()->createToken('authToken')->accessToken;
 
