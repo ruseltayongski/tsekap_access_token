@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Models\UserBrgy;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -35,6 +36,12 @@ class LoginController extends Controller
                 'message' => 'Your account is not authorized'
             ]);
         }*/
+
+        if (UserBrgy::where('user_id', Auth::user()->id)->isEmpty()) {
+            return response([
+                'message' => 'Your account is not authorized, no area assignment'
+            ]);
+        }
 
         $accessToken = Auth::user()->createToken('authToken')->accessToken;
 
