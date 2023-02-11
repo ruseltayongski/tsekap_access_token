@@ -37,7 +37,7 @@ class LoginController extends Controller
             ]);
         }*/
 
-        if (UserBrgy::where('user_id', Auth::user()->id)->isEmpty()) {
+        if (UserBrgy::where('user_id', Auth::user()->id)->get()->isEmpty()) {
             return response([
                 'message' => 'Your account is not authorized, no area assignment'
             ]);
