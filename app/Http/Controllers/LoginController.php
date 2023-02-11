@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Muncity;
 use App\Models\User;
 use App\Models\UserBrgy;
 use Carbon\Carbon;
@@ -48,6 +49,7 @@ class LoginController extends Controller
         return response([
             'userid' => Auth::user()->id,
             'muncity_id' => Auth::user()->muncity,
+            "muncity_description" => Muncity::find(Auth::user()->muncity_id)->description,
             'access_token' => $accessToken
         ]);
 
