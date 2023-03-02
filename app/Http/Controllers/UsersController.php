@@ -61,4 +61,33 @@ class UsersController extends Controller
             ->get();
     }
 
+    public function textBlast(Request $request) {
+        $curl = curl_init();
+
+        curl_setopt_array($curl, array(
+            CURLOPT_URL => 'https://fcm.googleapis.com/fcm/send',
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_ENCODING => '',
+            CURLOPT_MAXREDIRS => 10,
+            CURLOPT_TIMEOUT => 0,
+            CURLOPT_FOLLOWLOCATION => true,
+            CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+            CURLOPT_CUSTOMREQUEST => 'POST',
+            CURLOPT_POSTFIELDS =>'{
+                 "to" : "'.$request->to.'",
+                 "notification" : {
+                    "body" : '.$request->message.',
+                    "title" : "Text Blast"
+                 }
+            }',
+            CURLOPT_HTTPHEADER => array(
+                'Authorization: key=AAAAd6LG4Vo:APA91bGq5QLdpH_gX0RyrYnUNshipWO9K6y2o-VKmWbJTM6B4VSioJa4qHd5YjO8P244Buc8qXreuSP2aDBhf0DKEq_T_SmcCbPwOxAONnsnrsDgnitLUWIZ_PDQ3ANWshBTHzCxCGLn',
+                'Content-Type: application/json'
+            ),
+        ));
+
+        curl_exec($curl);
+        curl_close($curl);
+    }
+
 }
