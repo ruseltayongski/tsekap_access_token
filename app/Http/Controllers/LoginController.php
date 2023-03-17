@@ -48,6 +48,9 @@ class LoginController extends Controller
 
         return response([
             'userid' => Auth::user()->id,
+            'fname' => Auth::user()->fname,
+            'mname' => Auth::user()->mname,
+            'lname' => Auth::user()->lname,
             'muncity_id' => Auth::user()->muncity,
             "muncity_description" => Muncity::find(Auth::user()->muncity)->description,
             'access_token' => $accessToken
